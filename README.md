@@ -1,1 +1,1 @@
-# ucfguessr-redirect
+# UCFGuessr has moved to ucfguessr.com!
