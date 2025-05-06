@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
@@ -29,30 +30,38 @@
   <div class="redirect-container">
     <div class="header-container">
       <div class="title-group" style="justify-content: center;">
-        <h1>UCF<span style="color: #FFCC00">Guessr</span> has moved to .com!</h1>
+        <h1>UCF<span style="color: #FFCC00">Guessr</span> has moved to ucfguessr.com!</h1>
       </div>
     </div>
 
-    <p style="color: #666666; margin-bottom: 10px;">Update your bookmarks!</p>
+    <p style="color: #666666; margin-bottom: 10px;">Please update your bookmarks!</p>
+
+    <p style="color: #666666; margin-bottom: 10px;">
+      The ucfguessr.xyz URL will expire in 
+      <span id="days-until-expiry"></span> days.
+    </p>
 
     <p class="current-date" style="opacity: .6;">
       You’ll be sent to <strong>ucfguessr.com</strong> in 
       <span id="countdown">5</span> seconds.
     </p>
 
-    <div class="button-container" style="margin-top: 30px;">
-      <a href="https://ucfguessr.com" class="button">Go now →</a>
-    </div>
-  </div>
+    <script>
+      // Countdown timer for redirect
+      let t = 5;
+      const el = document.getElementById('countdown');
+      const timer = setInterval(() => {
+        t--;
+        if (t >= 0) el.textContent = t;
+        if (t === 0) clearInterval(timer);
+      }, 1000);
 
-  <script>
-    let t = 5;
-    const el = document.getElementById('countdown');
-    const timer = setInterval(() => {
-      t--;
-      if (t >= 0) el.textContent = t;
-      if (t === 0) clearInterval(timer);
-    }, 1000);
-  </script>
+      // Calculate days until domain expiration
+      const expiryDate = new Date('2026-02-20');
+      const today = new Date();
+      const timeDiff = expiryDate - today;
+      const daysUntilExpiry = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+      document.getElementById('days-until-expiry').textContent = daysUntilExpiry;
+    </script>
 </body>
 </html>
